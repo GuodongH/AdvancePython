@@ -59,6 +59,7 @@ class CacheBase():
     def set(self, key, value):
         raise NotImplementedError
 
+# 子类RedisCache继承CacheBase
 class RedisCache(CacheBase):
     def set(self, key, value):
         pass
@@ -70,6 +71,7 @@ redis_cache.set("key", "value")
 import abc
 
 class CacheBase(metaclass=abc.ABCMeta):
+    # 使用装饰器
     @abc.abstractmethod
     def get(self, key):
         pass
