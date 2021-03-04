@@ -90,7 +90,7 @@ redis_cache = RedisCache()
 ```
 
 ### collection.abc模块
-在这个模块中定义了很多通用的抽象基类, 比如Sized. 但是这些抽象基类定义出来并不是用来继承的, 更多的是让我们理解接口的一些定义. 推荐使用鸭子类型或者多继承(Mixin)实现, 而少用抽象基类.
+在这个模块中定义了很多通用的抽象基类, 比如Sized. 但是这些抽象基类定义出来并不是用来继承的, 更多的是让我们理解接口的一些定义. **推荐使用鸭子类型或者多继承(Mixin)实现, 而少用抽象基类.**
 ```
 __all__ = ["Awaitable", "Coroutine",
            "AsyncIterable", "AsyncIterator", "AsyncGenerator",
@@ -108,3 +108,21 @@ __all__ = ["Awaitable", "Coroutine",
 - metaclass = abc.ABCMeta
 - @abc.abstractmethod
 
+### isinstance
+ - 调用 `__subclasshood__`
+ - 查找继承链
+
+```
+class A:
+    pass
+    
+class B(A):
+     pass
+     
+ b = B()
+ print(isinstance(b, A))
+ # 会返回True
+```
+
+
+**抽象基类并不常用，会导致设计过度。推荐使用鸭子类型或者多继承(Mixin)实现, 而少用抽象基类.**
